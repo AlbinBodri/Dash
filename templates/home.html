@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <!--OWN CODE--> 
+    {% load static %}
+    <head>
+        <link rel="stylesheet" href="static/css/main.css">
+    </head>
+    <!--/OWN CODE-->
+{% endblock head %}
+
+{% block body %}
+    <!--OWN CODE-->
+    <h1> testing </h1>
+    {% for device in devices_list %}
+    <button type="button" id="submit" class="btn" value="{{device.dev_id}}">{{device.name}}</button>
+    {% endfor %}
+    <!--/OWN CODE-->
+{% endblock body %} 
+
+{% block javascript %}
+    <!--OWN CODE-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+
+    
+        var data = new FormData();
+        
+        $(document).on('click', '#submit', function(e) {
+            data.append('action', 'toggle_button')
+            data.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+            data.append('id', $(this).val())
+              $.ajax({
+                  type: 'POST',
+                  url: '{% url "toggle_button" %}',
+                  data: data,
+                  cache: false,
+                  processData: false,
+                  contentType: false,
+                  enctype: 'multipart/form-data',
+              })
+          })
+    
+    </script>
+    <!--/OWN CODE-->
+{% endblock javascript %}

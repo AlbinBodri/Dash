@@ -1,0 +1,13 @@
+*.drawio
+.plan/readme.txt
+.plan/test.html
+.plan/test.py
+templates/home _backup.html
+.vscode/launch.json
+db.sqlite3
+*.pyc
+pages/migrations/0003_rename_status_device_action.py
+pages/migrations/0002_device_dev_id.py
+pages/migrations/0001_initial.py
+Pipfile
+Pipfile.lock
